@@ -2,9 +2,14 @@ const express = require('express');
 let pokemons = require('./pokemons');
 const { success } = require('./helper')
 const app = express();
-const port = 9000;
+const port = 3000;
 
+const logger=(req,res,next)=>{
+    console.log(`URL: ${req.url}`);//req.url récupére l'url fournit par le client
+    next();// signifie que la fin du middlware est terminé
+}
 
+app.use(logger)
 app.get('/', function (req, res) {
     res.setHeader('Content-Type', 'text/plain');
     res.end('Vous êtes à l\'accueil');
