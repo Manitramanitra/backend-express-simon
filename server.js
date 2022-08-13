@@ -18,6 +18,7 @@ require('./source/routes/findAllPokemons')(app);
 require('./source/routes/findPokemonByPk')(app);
 require('./source/routes/createPokemon')(app);
 require('./source/routes/updatePokemon')(app);
+require('./source/routes/deletePokemon')(app);
 
 app.listen(port, () => {
     console.log(`notre serveur marche sur http://localhost:${port}`)
