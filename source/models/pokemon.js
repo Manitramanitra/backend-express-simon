@@ -26,9 +26,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       get() {
+        // ici on définit un getteur selon sequelize
         return this.getDataValue('types').split(',')
       },
       set(types) {
+        // ici on définit un setteur selon sequelize
         this.setDataValue('types', types.join())
       }
     }
