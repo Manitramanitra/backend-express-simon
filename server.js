@@ -20,6 +20,11 @@ require("./source/routes/createPokemon")(app);
 require("./source/routes/updatePokemon")(app);
 require("./source/routes/deletePokemon")(app);
 
+app.use(({ res }) => {
+   const message = "page not found";
+   res.status(404).json({ message });
+});
+
 app.listen(port, () => {
    console.log(`notre serveur marche sur http://localhost:${port}`);
 });

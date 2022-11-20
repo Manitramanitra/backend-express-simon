@@ -7,6 +7,10 @@ module.exports = (app) => {
             const message = `Le pokémon ${pokemon.name} a bien été créer`;
             res.json({ message, data: pokemon });
          })
-         .catch((err) => console.error(err));
+         .catch((err) => {
+            const message = `la liste des pokémons n'a pas pu être ajouté. Réessayez dans quelque erreur`;
+            res.status(500).json({ message, data: err });
+            console.error(err);
+         });
    });
 };

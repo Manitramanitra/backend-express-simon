@@ -7,11 +7,19 @@ module.exports = (app) => {
          where: { id: id },
       })
          .then((_) => {
-            Pokemon.findByPk(id).then((pokemon) => {
+            return Pokemon.findByPk(id).then((pokemon) => {
+               if (pokemon === null) {
+                  const message = "le pokémon demandé n'existe pas";
+                  res.status(404).json({ message });
+               }
                const message = `Le pokémon ${pokemon.name} a bien bien modifié`;
                res.json({ message, data: pokemon });
             });
          })
-         .catch((err) => console.error(err));
+         .catch((err) => {
+            const message = `la liste des pokémons n'a pas pu être modifié. Réessayez dans quelque erreur`;
+            res.status(500).json({ message, data: err });
+            console.error(err);
+         });
    });
 };

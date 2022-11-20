@@ -7,6 +7,10 @@ module.exports = (app) => {
             const message = "voici la liste des pokémons dans le pokedex";
             res.json({ message, data: pokemons });
          })
-         .catch((err) => console.error(err));
+         .catch((err) => {
+            const message = `la liste des pokémons n'a pas pu être récupérer. Réessayez dans quelque erreur`;
+            res.status(500).json({ message, data: err });
+            console.error(err);
+         });
    });
 };
