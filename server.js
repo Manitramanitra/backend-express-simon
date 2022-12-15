@@ -25,6 +25,7 @@ app.use(({ res }) => {
    res.status(404).json({ message });
 });
 
-app.listen(port, () => {
+app.listen(port, (err) => {
+   if (err) throw err;
    console.log(`notre serveur marche sur http://localhost:${port}`);
 });
